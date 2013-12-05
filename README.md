@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/lmtm/gulp-front-matter.png?branch=master)](https://travis-ci.org/lmtm/gulp-front-matter)
+[![Dependency Status](https://david-dm.org/lmtm/gulp-front-matter.png)](https://david-dm.org/lmtm/gulp-front-matter)
+
 ## Information
 
 <table>
@@ -10,7 +13,7 @@
 </tr>
 <tr>
 <td>Node Version</td>
-<td>≥ 0.6</td>
+<td>≥ 0.7</td>
 </tr>
 </table>
 
