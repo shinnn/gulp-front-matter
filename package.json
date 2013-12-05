@@ -1,0 +1,35 @@
+{
+  "name": "gulp-front-matter",
+  "version": "0.0.1",
+  "description": "Extract front-matter header from files",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lmtm/gulp-front-matter.git"
+  },
+  "keywords": [
+    "gulpplugin"
+  ],
+  "author": "Nicolas Chambrier <naholyr@gmail.com> (http://naholyr.fr/)",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/lmtm/gulp-front-matter/issues"
+  },
+  "homepage": "https://github.com/lmtm/gulp-front-matter",
+  "dependencies": {
+    "event-stream": "~3.0.18",
+    "front-matter": "~0.1.4",
+    "lodash": "~2.4.1"
+  },
+  "peerDependencies": {
+    "gulp": "~2.7.0"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.15.1",
+    "gulp": "~2.7.0"
+  }
+}
