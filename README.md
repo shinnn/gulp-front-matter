@@ -22,9 +22,9 @@
 ```javascript
 var frontMatter = require('gulp-front-matter');
 
-gulp.task('convert', function() {
-  gulp.files('./src/*.md')
-    .pipe(frontMatter({ // optional options
+gulp.task('blog-posts', function() {
+  gulp.files('./posts/*.md')
+    .pipe(frontMatter({ // optional configuration
       property: 'frontMatter', // property added to file object
       remove: true // should we remove front-matter header?
     }))
