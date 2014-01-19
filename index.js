@@ -12,7 +12,7 @@ module.exports = function (options) {
 
   return es.map(function (file, cb) {
     var content;
-    
+
     if (file.isBuffer()) {
       content = frontMatter(String(file.contents));
 
@@ -21,8 +21,6 @@ module.exports = function (options) {
       file[options.property] = content.attributes;
       if (options.remove) {
         file.contents = new Buffer(content.body);
-      } else {
-        file.contents = new Buffer(content);
       }
     } else {
       // stream
