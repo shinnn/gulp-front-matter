@@ -24,12 +24,9 @@
     "front-matter": "~0.1.4",
     "lodash": "~2.4.1"
   },
-  "peerDependencies": {
-    "gulp": "~2.7.0"
-  },
   "devDependencies": {
     "chai": "~1.8.1",
     "mocha": "~1.15.1",
-    "gulp": "~2.7.0"
+    "gulp": "~3.4.0"
   }
 }
