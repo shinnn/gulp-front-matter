@@ -1,6 +1,6 @@
 {
   "name": "gulp-front-matter",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Extract front-matter header from files",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,6 @@
     "gulp": "~3.4.0"
   },
   "engines": {
-    "node" : ">=0.9.0"
+    "node": ">=0.9.0"
   }
 }
