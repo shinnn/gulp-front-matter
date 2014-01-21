@@ -14,10 +14,12 @@ module.exports = function (options) {
     var content;
 
     if (file.isBuffer()) {
-      content = frontMatter(String(file.contents));
+      try {
+        content = frontMatter(String(file.contents));
+      } catch (e) {
+        return cb(e);
+      }
 
-      // _.clone(file) throws an error in the actual gulp version
-      // file = _.clone(file);
       file[options.property] = content.attributes;
       if (options.remove) {
         file.contents = new Buffer(content.body);
@@ -27,18 +29,6 @@ module.exports = function (options) {
       // @ToDo implement the stream handling 
       return cb(new Error('gulp-front-matter: Cannot get the front matter in a stream'), file);
     }
-
-    // try {
-    //   content = frontMatter(String(file.contents));
-    // } catch (e) {
-    //   return cb(e);
-    // }
-
-    // file = _.clone(file);
-    // file[options.property] = content.attributes;
-    // if (options.remove) {
-    //   file.contents = new Buffer(content.body);
-    // }
 
     cb(null, file);
   });
