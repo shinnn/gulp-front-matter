@@ -1,11 +1,13 @@
 "use strict";
 
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var expect = require('chai').expect;
 
 var es = require('event-stream');
 var fs = require('fs');
 var path = require('path');
+var stream = require('stream');
 
 var frontMatter = require('../');
 
@@ -46,4 +48,29 @@ describe('gulp-front-matter', function() {
     expect(file.data).to.be.an('object').and.have.property('layout');
     cb();
   }));
+
+  it ('should raise a plugin error for stream file', function (done) {
+    var streamFile = new gutil.File({ contents: new stream.Stream() });
+    var fm = frontMatter()
+      .on('error', function (err) {
+        expect(err).to.be.an.instanceOf(gutil.PluginError);
+        done();
+      })
+      .on('end', function () {
+        done(new Error('Stream end without error'));
+      });
+    fm.write(streamFile);
+    fm.end();
+  });
+
+  it ('should get null file through', function (done) {
+    var nullFile = new gutil.File();
+    var fm = frontMatter()
+      .on('data', function (file) {
+        expect(file).to.be.equal(nullFile);
+      })
+      .on('end', done);
+    fm.write(nullFile);
+    fm.end();
+  });
 });
