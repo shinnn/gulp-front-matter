@@ -1,4 +1,4 @@
-var es = require('event-stream');
+var mapStream = require('map-stream');
 var _ = require('lodash');
 var frontMatter = require('front-matter');
 var gutil = require('gulp-util');
@@ -13,7 +13,7 @@ module.exports = function (options) {
     remove:   true
   }, options || {});
 
-  return es.map(function (file, cb) {
+  return mapStream(function (file, cb) {
     var content;
 
     if (file.isBuffer()) {
