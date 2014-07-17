@@ -21,13 +21,13 @@
   "homepage": "https://github.com/lmtm/gulp-front-matter",
   "dependencies": {
     "front-matter": "~0.2.0",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
     "map-stream": "^0.1.0"
   },
   "devDependencies": {
-    "chai": "~1.8.1",
-    "mocha": "~1.17.0",
-    "gulp": "~3.4.0",
+    "chai": "~1.9.1",
+    "mocha": "~1.20.1",
+    "gulp": "~3.8.6",
     "gulp-util": "~2.2.14"
   },
   "engines": {
