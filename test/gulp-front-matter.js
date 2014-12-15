@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var expect = require('chai').expect;
 
-var es = require('event-stream');
+var mapStream = require('map-stream');
 var fs = require('fs');
 var path = require('path');
 var stream = require('stream');
@@ -18,14 +18,14 @@ function test (input, options, check) {
   return function (done) {
     gulp.src(input)
       // Keep original contents
-      .pipe(es.map(function (file, cb) {
+      .pipe(mapStream(function (file, cb) {
         file.originalContents = file.contents;
         cb(null, file);
       }))
       // Execute plugin
       .pipe(frontMatter(options))
       // Test
-      .pipe(es.map(check).on('end', done));
+      .pipe(mapStream(check).on('end', done));
   };
 }
 
