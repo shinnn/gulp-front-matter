@@ -8,6 +8,10 @@
   ],
   "scripts": {
     "pretest": "jscs *.js test/*.js && eslint *.js test/*.js",
+    "test": "_mocha",
+    "coverage": "istanbul cover _mocha",
+    "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
+  },
   "engines": {
     "node": ">=0.9.0"
   },
@@ -36,6 +40,8 @@
     "chai": "^1.10.0",
     "eslint": "^0.10.2",
     "gulp": "^3.8.10",
+    "istanbul": "^0.3.5",
+    "istanbul-coveralls": "^1.0.1",
     "jscs": "^1.8.1",
     "mocha": "^2.0.1"
   },

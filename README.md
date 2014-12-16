@@ -1,5 +1,9 @@
-gulp-front-matter [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
-===
+#gulp-front-matter 
+
+[![NPM version](http://img.shields.io/npm/v/gulp-front-matter.svg?style=flat)](https://www.npmjs.com/package/gulp-front-matter)
+[![Build Status](http://img.shields.io/travis/lmtm/gulp-front-matter.svg?style=flat)](http://travis-ci.org/lmtm/gulp-front-matter)
+[![Coverage Status](https://img.shields.io/coveralls/lmtm/gulp-front-matter.svg?style=flat)](https://coveralls.io/r/lmtm/gulp-front-matter)
+[![Dependency Status](https://david-dm.org/lmtm/gulp-front-matter.svg?style=flat)](https://david-dm.org/lmtm/gulp-front-matter)
 
 ## Information
 
@@ -16,6 +20,14 @@ gulp-front-matter [![NPM version][npm-image]][npm-url] [![Build Status][travis-i
 <td>≥ 0.7</td>
 </tr>
 </table>
+
+## Installation
+
+[use npm.](https://docs.npmjs.com/cli/install)
+
+```sh
+npm install gulp-front-matter
+```
 
 ## Usage
 
@@ -44,12 +56,3 @@ gulp.task('blog-posts', function() {
 > 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 >
 > THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-[npm-url]: https://npmjs.org/package/gulp-front-matter
-[npm-image]: http://img.shields.io/npm/v/gulp-front-matter.svg?style=flat
-
-[travis-url]: http://travis-ci.org/lmtm/gulp-front-matter
-[travis-image]: http://img.shields.io/travis/lmtm/gulp-front-matter.svg?style=flat
-
-[depstat-url]: https://david-dm.org/lmtm/gulp-front-matter
-[depstat-image]: https://david-dm.org/lmtm/gulp-front-matter.svg?style=flat
