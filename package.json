@@ -30,7 +30,6 @@
   "dependencies": {
     "front-matter": "^0.2.0",
     "gulp-util": "^3.0.1",
-    "lodash": "^2.4.1",
     "map-stream": "^0.1.0"
   },
   "devDependencies": {

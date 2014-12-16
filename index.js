@@ -1,38 +1,47 @@
-var mapStream = require('map-stream');
-var _ = require('lodash');
+'use strict';
+
 var frontMatter = require('front-matter');
-var gutil = require('gulp-util');
+var mapStream = require('map-stream');
+var PluginError = require('gulp-util').PluginError;
 
 var PLUGIN_NAME = 'gulp-front-matter';
 
-module.exports = function (options) {
+module.exports = function(options) {
+  options = options || {};
 
-  // Default options
-  options = _.extend({
-    property: 'frontMatter',
-    remove:   true
-  }, options || {});
+  var propertyName;
+  if (options.property !== undefined) {
+    if (typeof options.property !== 'string') {
+      throw new TypeError(
+        options.property +
+        ' is not a string. "property" option must be a string.'
+      );
+    }
+    propertyName = options.property;
+  } else {
+    propertyName = 'frontMatter';
+  }
 
-  return mapStream(function (file, cb) {
+  return mapStream(function(file, cb) {
     var content;
 
     if (file.isBuffer()) {
       try {
         content = frontMatter(String(file.contents));
       } catch (e) {
-        return cb(new gutil.PluginError(PLUGIN_NAME, e));
+        return cb(new PluginError(PLUGIN_NAME, e));
       }
 
-      file[options.property] = content.attributes;
-      if (options.remove) {
+      file[propertyName] = content.attributes;
+      if (options.remove !== false) {
         file.contents = new Buffer(content.body);
       }
     } else if (file.isNull()) {
       return cb(null, file);
-    } else  {
+    } else {
       // stream
-      // @ToDo implement the stream handling 
-      return cb(new gutil.PluginError(PLUGIN_NAME, 'gulp-front-matter: Cannot get the front matter in a stream'));
+      // @ToDo implement the stream handling
+      return cb(new PluginError(PLUGIN_NAME, 'gulp-front-matter: Cannot get the front matter in a stream'));
     }
 
     cb(null, file);
