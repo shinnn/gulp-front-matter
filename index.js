@@ -1,7 +1,7 @@
 'use strict';
 
 var frontMatter = require('front-matter');
-var mapStream = require('map-stream');
+var through = require('through2');
 var PluginError = require('gulp-util').PluginError;
 
 var PLUGIN_NAME = 'gulp-front-matter';
@@ -22,28 +22,32 @@ module.exports = function(options) {
     propertyName = 'frontMatter';
   }
 
-  return mapStream(function(file, cb) {
-    var content;
+  return through.obj(function gulpFrontMatterTransform(file, enc, cb) {
+    if (file.isNull()) {
+      cb(null, file);
+      return;
+    }
 
     if (file.isBuffer()) {
+      var content;
+
       try {
         content = frontMatter(String(file.contents));
       } catch (e) {
-        return cb(new PluginError(PLUGIN_NAME, e));
+        cb(new PluginError(PLUGIN_NAME, e));
+        return;
       }
 
       file[propertyName] = content.attributes;
+
       if (options.remove !== false) {
         file.contents = new Buffer(content.body);
       }
-    } else if (file.isNull()) {
-      return cb(null, file);
-    } else {
-      // stream
-      // @ToDo implement the stream handling
-      return cb(new PluginError(PLUGIN_NAME, 'gulp-front-matter: Cannot get the front matter in a stream'));
+
+      cb(null, file);
+      return;
     }
 
-    cb(null, file);
+    cb(new PluginError(PLUGIN_NAME, 'Cannot get the front matter in a stream'));
   });
 };

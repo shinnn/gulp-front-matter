@@ -34,7 +34,7 @@
   "dependencies": {
     "front-matter": "^0.2.0",
     "gulp-util": "^3.0.1",
-    "map-stream": "^0.1.0"
+    "through2": "^0.6.3"
   },
   "devDependencies": {
     "chai": "^1.10.0",
@@ -43,6 +43,7 @@
     "istanbul": "^0.3.5",
     "istanbul-coveralls": "^1.0.1",
     "jscs": "^1.8.1",
+    "map-stream": "0.0.5",
     "mocha": "^2.0.1"
   },
   "jscsConfig": {
