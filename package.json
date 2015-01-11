@@ -21,13 +21,13 @@
     "yaml",
     "data",
     "property",
+    "extract",
     "attribute",
     "attributes",
     "frontmatter",
     "front-matter",
     "meta",
-    "meta-data",
-    "gulpplugin"
+    "meta-data"
   ],
   "author": "Nicolas Chambrier <naholyr@gmail.com> (http://naholyr.fr/)",
   "license": "BSD-2-Clause",
