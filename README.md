@@ -4,7 +4,8 @@
 [![Build Status](http://img.shields.io/travis/lmtm/gulp-front-matter.svg?style=flat)](http://travis-ci.org/lmtm/gulp-front-matter)
 [![Build status](https://ci.appveyor.com/api/projects/status/uklpp61n71y0pvr2?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/gulp-front-matter)
 [![Coverage Status](https://img.shields.io/coveralls/lmtm/gulp-front-matter.svg?style=flat)](https://coveralls.io/r/lmtm/gulp-front-matter)
-[![Dependency Status](https://david-dm.org/lmtm/gulp-front-matter.svg?style=flat)](https://david-dm.org/lmtm/gulp-front-matter)
+[![Dependency Status](https://img.shields.io/david/lmtm/gulp-front-matter.svg?style=flat&label=deps)](https://david-dm.org/lmtm/gulp-front-matter)
+[![devDependency Status](https://img.shields.io/david/dev/lmtm/gulp-front-matter.svg?style=flat&label=devDeps)](https://david-dm.org/lmtm/gulp-front-matter#info=devDependencies)
 
 ## Information
 
@@ -24,7 +25,7 @@
 
 ## Installation
 
-[use npm.](https://docs.npmjs.com/cli/install)
+[Use npm.](https://docs.npmjs.com/cli/install)
 
 ```sh
 npm install gulp-front-matter
