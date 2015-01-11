@@ -32,9 +32,11 @@
   "author": "Nicolas Chambrier <naholyr@gmail.com> (http://naholyr.fr/)",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "front-matter": "^0.2.0",
-    "gulp-util": "^3.0.1",
-    "through2": "^0.6.3"
+    "bufferstreams": "0.0.2",
+    "front-matter": "jxson/front-matter#2ba63517dde31a54a18e47f67bf159e66260162f",
+    "gulp-util": "^3.0.2",
+    "through2": "^0.6.3",
+    "tryit": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^0.11.0",
