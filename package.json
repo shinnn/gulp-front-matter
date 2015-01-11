@@ -50,7 +50,7 @@
   },
   "jscsConfig": {
     "preset": "google",
-    "maximumLineLength": 128,
+    "maximumLineLength": 98,
     "validateLineBreaks": "LF"
   }
 }
