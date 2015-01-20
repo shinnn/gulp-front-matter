@@ -13,9 +13,9 @@ test('gulp-front-matter', function(t) {
   frontMatter()
   .on('error', t.fail)
   .on('data', function(file) {
-    t.deepEqual(file, new File({}), 'should read null file as it is.');
+    t.deepEqual(file, new File(), 'should read null file as it is.');
   })
-  .end(new File({}));
+  .end(new File());
 
   frontMatter()
   .on('error', t.fail)
