@@ -1,15 +1,15 @@
 'use strict';
 
-var BufferStreams = require('bufferstreams');
 var frontMatter = require('front-matter');
 var PluginError = require('gulp-util').PluginError;
 var through = require('through2');
 var tryit = require('tryit');
+var VinylBufferStream = require('vinyl-bufferstream');
 
 module.exports = function gulpFrontMatter(options) {
   options = options || {};
 
-  var propertyName;
+  var property;
   if (options.property !== undefined) {
     if (typeof options.property !== 'string') {
       throw new PluginError('gulp-front-matter', new TypeError(
@@ -17,18 +17,13 @@ module.exports = function gulpFrontMatter(options) {
         ' is not a string. "property" option must be a string.'
       ));
     }
-    propertyName = options.property;
+    property = options.property;
   } else {
-    propertyName = 'frontMatter';
+    property = 'frontMatter';
   }
 
   return through.obj(function gulpFrontMatterTransform(file, enc, cb) {
-    if (file.isNull()) {
-      cb(null, file);
-      return;
-    }
-
-    function run(buf, done) {
+    var run = new VinylBufferStream(function(buf, done) {
       var content;
 
       tryit(function() {
@@ -41,7 +36,7 @@ module.exports = function gulpFrontMatter(options) {
           return;
         }
 
-        file[propertyName] = content.attributes;
+        file[property] = content.attributes;
         if (options.remove !== false) {
           done(null, new Buffer(content.body));
           return;
@@ -49,27 +44,11 @@ module.exports = function gulpFrontMatter(options) {
 
         done(null, buf);
       });
-    }
+    });
 
     var self = this;
 
-    if (file.isStream()) {
-      file.contents = file.contents.pipe(new BufferStreams(function(none, buf, done) {
-        run(buf, function(err, contents) {
-          if (err) {
-            self.emit('error', err);
-            done(err);
-          } else {
-            done(null, contents);
-            self.push(file);
-          }
-          cb();
-        });
-      }));
-      return;
-    }
-
-    run(file.contents, function(err, contents) {
+    run(file, function(err, contents) {
       if (err) {
         self.emit('error', err);
       } else {
