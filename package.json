@@ -1,6 +1,6 @@
 {
   "name": "gulp-front-matter",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Extract front-matter header from files",
   "repository": "lmtm/gulp-front-matter",
   "files": [
