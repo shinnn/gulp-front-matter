@@ -30,6 +30,9 @@
     "meta-data"
   ],
   "author": "Nicolas Chambrier <naholyr@gmail.com> (http://naholyr.fr/)",
+  "contributors": [
+    "Shinnosuke Watanabe <snnskwtnb@gmail.com> (https://github.com/shinnn)"
+  ],
   "license": "BSD-2-Clause",
   "dependencies": {
     "front-matter": "^0.2.1",
