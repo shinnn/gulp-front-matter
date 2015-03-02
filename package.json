@@ -35,19 +35,19 @@
   ],
   "license": "BSD-2-Clause",
   "dependencies": {
-    "front-matter": "^0.2.1",
-    "gulp-util": "^3.0.3",
+    "front-matter": "^1.0.0",
+    "gulp-util": "^3.0.4",
     "through2": "^0.6.3",
     "tryit": "^1.0.1",
-    "vinyl-bufferstream": "^1.0.0"
+    "vinyl-bufferstream": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "^0.13.0",
-    "istanbul": "^0.3.5",
-    "istanbul-coveralls": "^1.0.1",
-    "jscs": "^1.11.0",
+    "eslint": "^0.15.1",
+    "istanbul": "^0.3.6",
+    "istanbul-coveralls": "^1.0.2",
+    "jscs": "^1.11.3",
     "simple-bufferstream": "0.0.4",
-    "tap-spec": "^2.2.1",
+    "tap-spec": "^2.2.2",
     "tape": "^3.5.0",
     "vinyl": "^0.4.6"
   },
