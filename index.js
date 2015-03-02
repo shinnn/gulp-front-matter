@@ -31,8 +31,7 @@ module.exports = function gulpFrontMatter(options) {
       }, function(err) {
         if (err) {
           err.message = err.stack.replace(/\n +at[\s\S]*/, '');
-          err.fileName = file.path;
-          done(new PluginError('gulp-front-matter', err));
+          done(new PluginError('gulp-front-matter', err, {fileName: file.path}));
           return;
         }
 
