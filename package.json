@@ -7,7 +7,7 @@
     "index.js"
   ],
   "scripts": {
-    "pretest": "jscs *.js && eslint *.js",
+    "pretest": "eslint --config node_modules/@shinnn/eslintrc-node/rc.json index.js test.js",
     "test": "node test.js | tap-spec",
     "coverage": "istanbul cover test.js",
     "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
@@ -37,23 +37,18 @@
   "dependencies": {
     "front-matter": "^1.0.0",
     "gulp-util": "^3.0.4",
-    "through2": "^0.6.3",
+    "through2": "^0.6.5",
     "tryit": "^1.0.1",
     "vinyl-bufferstream": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "^0.15.1",
-    "istanbul": "^0.3.6",
+    "@shinnn/eslintrc-node": "^1.0.2",
+    "eslint": "^0.20.0",
+    "istanbul": "^0.3.13",
     "istanbul-coveralls": "^1.0.2",
-    "jscs": "^1.11.3",
-    "simple-bufferstream": "0.0.4",
-    "tap-spec": "^2.2.2",
-    "tape": "^3.5.0",
+    "simple-bufferstream": "^1.0.0",
+    "tap-spec": "^3.0.0",
+    "tape": "^4.0.0",
     "vinyl": "^0.4.6"
-  },
-  "jscsConfig": {
-    "preset": "google",
-    "maximumLineLength": 98,
-    "validateLineBreaks": "LF"
   }
 }
