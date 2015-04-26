@@ -10,7 +10,7 @@ skip_tags: true
 environment:
   matrix:
     - nodejs_version: '1'
-    - nodejs_version: '0.12'
+    - nodejs_version: '0'
 
 install:
   - ps: Install-Product node $env:nodejs_version
@@ -21,7 +21,7 @@ build: off
 
 test_script:
   - ps: 'node test.js #PowerShell'
-  - cmd: node test.js
+  - node test.js
 
 cache:
   - node_modules -> package.json
