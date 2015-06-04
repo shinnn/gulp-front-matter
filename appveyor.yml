@@ -9,7 +9,7 @@ skip_tags: true
 
 environment:
   matrix:
-    - nodejs_version: '1'
+    - nodejs_version: '2'
     - nodejs_version: '0'
 
 install:
@@ -20,7 +20,6 @@ install:
 build: off
 
 test_script:
-  - ps: 'node test.js #PowerShell'
   - node test.js
 
 cache:
