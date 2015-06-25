@@ -1,9 +1,9 @@
 'use strict';
 
-var bufferToStream = require('simple-bufferstream');
-var test = require('tape');
 var frontMatter = require('./');
 var File = require('vinyl');
+var stringToStream = require('from2-string');
+var test = require('tape');
 
 test('gulp-front-matter', function(t) {
   t.plan(16);
@@ -71,7 +71,7 @@ test('gulp-front-matter', function(t) {
     });
   })
   .end(new File({
-    contents: bufferToStream(new Buffer('---\na: 1\n---\nHi'))
+    contents: stringToStream('---\na: 1\n---\nHi')
   }));
 
   frontMatter()
@@ -95,7 +95,7 @@ test('gulp-front-matter', function(t) {
     );
   })
   .end(new File({
-    contents: bufferToStream(new Buffer('---\n:\n-{\n---'))
+    contents: stringToStream('---\n:\n-{\n---')
   }));
 
   frontMatter({property: 'foo', remove: false})
