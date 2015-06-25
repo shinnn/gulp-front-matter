@@ -2,7 +2,7 @@
 
 var frontMatter = require('front-matter');
 var PluginError = require('gulp-util').PluginError;
-var through = require('through2');
+var Transform = require('readable-stream/transform');
 var tryit = require('tryit');
 var VinylBufferStream = require('vinyl-bufferstream');
 
@@ -22,39 +22,42 @@ module.exports = function gulpFrontMatter(options) {
     property = 'frontMatter';
   }
 
-  return through.obj(function gulpFrontMatterTransform(file, enc, cb) {
-    var run = new VinylBufferStream(function(buf, done) {
-      var content;
+  return new Transform({
+    objectMode: true,
+    transform: function gulpFrontMatterTransform(file, enc, cb) {
+      var run = new VinylBufferStream(function(buf, done) {
+        var content;
 
-      tryit(function() {
-        content = frontMatter(String(buf), {filename: file.path});
-      }, function(err) {
-        if (err) {
-          err.message = err.stack.replace(/\n +at[\s\S]*/, '');
-          done(new PluginError('gulp-front-matter', err, {fileName: file.path}));
-          return;
-        }
+        tryit(function() {
+          content = frontMatter(String(buf), {filename: file.path});
+        }, function(err) {
+          if (err) {
+            err.message = err.stack.replace(/\n +at[\s\S]*/, '');
+            done(new PluginError('gulp-front-matter', err, {fileName: file.path}));
+            return;
+          }
 
-        file[property] = content.attributes;
-        if (options.remove !== false) {
-          done(null, new Buffer(content.body));
-          return;
-        }
+          file[property] = content.attributes;
+          if (options.remove !== false) {
+            done(null, new Buffer(content.body));
+            return;
+          }
 
-        done(null, buf);
+          done(null, buf);
+        });
       });
-    });
 
-    var self = this;
+      var self = this;
 
-    run(file, function(err, contents) {
-      if (err) {
-        self.emit('error', err);
-      } else {
-        file.contents = contents;
-        self.push(file);
-      }
-      cb();
-    });
+      run(file, function(err, contents) {
+        if (err) {
+          self.emit('error', err);
+        } else {
+          file.contents = contents;
+          self.push(file);
+        }
+        cb();
+      });
+    }
   });
 };
