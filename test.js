@@ -6,7 +6,7 @@ var stringToStream = require('from2-string');
 var test = require('tape');
 
 test('gulp-front-matter', function(t) {
-  t.plan(16);
+  t.plan(18);
 
   t.equal(frontMatter.name, 'gulpFrontMatter', 'should have a function name.');
 
@@ -123,4 +123,24 @@ test('gulp-front-matter', function(t) {
     /.*is not a string.*must be a string/,
     'should throw a plugin error when `property` option is not a string.'
   );
+
+  var deepTest = frontMatter({property: 'data.foo'})
+  .on('error', t.fail)
+  .on('data', function(file) {
+    t.deepEqual(
+      file.data.foo,
+      [false],
+      'should change deep properties using `property.subproperty` option.'
+    );
+    t.notOk(
+      'frontMatter' in file,
+      'should not change `frontMatter` property when `property` option isn\'t the default value.'
+    );
+  });
+  var deepFile = new File({contents: new Buffer('---\n- false\n---\nHi')});
+  deepFile.data = {
+    asd: 'qwe',
+    foo: 'bar'
+  };
+  deepTest.end(deepFile);
 });

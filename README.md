@@ -40,6 +40,8 @@ gulp.task('blog-posts', function() {
   gulp.src('./posts/*.md')
     .pipe(frontMatter({ // optional configuration
       property: 'frontMatter', // property added to file object
+                               // also works with deep property selectors
+                               // e.g., 'data.foo.bar'
       remove: true // should we remove front-matter header?
     }))
     .pipe(…) // you may want to take a look at gulp-marked at this point

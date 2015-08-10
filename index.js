@@ -5,6 +5,7 @@ var PluginError = require('gulp-util').PluginError;
 var Transform = require('readable-stream/transform');
 var tryit = require('tryit');
 var VinylBufferStream = require('vinyl-bufferstream');
+var objectPath = require('object-path');
 
 module.exports = function gulpFrontMatter(options) {
   options = options || {};
@@ -37,7 +38,7 @@ module.exports = function gulpFrontMatter(options) {
             return;
           }
 
-          file[property] = content.attributes;
+          objectPath.set(file, property, content.attributes);
           if (options.remove !== false) {
             done(null, new Buffer(content.body));
             return;
