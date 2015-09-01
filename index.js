@@ -1,11 +1,11 @@
 'use strict';
 
 var frontMatter = require('front-matter');
+var objectPath = require('object-path');
 var PluginError = require('gulp-util').PluginError;
 var Transform = require('readable-stream/transform');
 var tryit = require('tryit');
 var VinylBufferStream = require('vinyl-bufferstream');
-var objectPath = require('object-path');
 
 module.exports = function gulpFrontMatter(options) {
   options = options || {};
@@ -31,14 +31,18 @@ module.exports = function gulpFrontMatter(options) {
 
         tryit(function() {
           content = frontMatter(String(buf), {filename: file.path});
+          objectPath.set(file, property, content.attributes);
         }, function(err) {
           if (err) {
             err.message = err.stack.replace(/\n +at[\s\S]*/, '');
-            done(new PluginError('gulp-front-matter', err, {fileName: file.path}));
+            var errorOption = {};
+            if (file.path !== undefined) {
+              errorOption.fileName = file.path;
+            }
+            done(new PluginError('gulp-front-matter', err, errorOption));
             return;
           }
 
-          objectPath.set(file, property, content.attributes);
           if (options.remove !== false) {
             done(null, new Buffer(content.body));
             return;
