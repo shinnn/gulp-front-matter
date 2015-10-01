@@ -1,13 +1,10 @@
 sudo: false
 git:
-  depth: 2
+  depth: 1
 branches:
   except: /^v\d/
 language: node_js
-node_js:
-  - iojs
-  - node
-after_script:
-  - npm run-script coveralls
+node_js: node
+after_script: npm run-script coveralls
 notifications:
   email: false
