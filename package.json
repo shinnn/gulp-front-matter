@@ -7,7 +7,7 @@
     "index.js"
   ],
   "scripts": {
-    "pretest": "eslint --config @shinnn/node-legacy index.js test.js",
+    "pretest": "eslint --config @shinnn/node index.js test.js",
     "test": "node test.js | tap-spec",
     "coverage": "istanbul cover test.js",
     "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
@@ -34,20 +34,20 @@
   ],
   "license": "BSD-2-Clause",
   "dependencies": {
-    "front-matter": "^2.0.0",
-    "gulp-util": "^3.0.6",
-    "object-path": "^0.9.2",
-    "readable-stream": "^2.0.3",
-    "tryit": "^1.0.1",
+    "front-matter": "^2.1.0",
+    "gulp-util": "^3.0.7",
+    "object-path": "^0.11.0",
+    "readable-stream": "^2.1.4",
+    "tryit": "^1.0.2",
     "vinyl-bufferstream": "^1.0.1"
   },
   "devDependencies": {
-    "@shinnn/eslint-config-node-legacy": "^1.0.0",
-    "eslint": "^1.7.3",
+    "@shinnn/eslint-config-node": "^2.0.0",
+    "eslint": "^2.13.1",
     "from2-string": "^1.1.0",
-    "istanbul": "^0.4.0",
-    "tap-spec": "^4.1.0",
-    "tape": "^4.2.2",
-    "vinyl": "^1.1.0"
+    "istanbul": "^0.4.4",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0",
+    "vinyl": "^1.1.1"
   }
 }

@@ -19,7 +19,7 @@
 </tr>
 <tr>
 <td>Node Version</td>
-<td>≥ 0.7</td>
+<td>≥ 4</td>
 </tr>
 </table>
 
@@ -27,17 +27,18 @@
 
 [Use npm.](https://docs.npmjs.com/cli/install)
 
-```sh
+```
 npm install gulp-front-matter
 ```
 
 ## Usage
 
 ```javascript
-var frontMatter = require('gulp-front-matter');
+const gulp = require('gulp');
+const frontMatter = require('gulp-front-matter');
 
-gulp.task('blog-posts', function() {
-  gulp.src('./posts/*.md')
+gulp.task('blog-posts', () => {
+  return gulp.src('./posts/*.md')
     .pipe(frontMatter({ // optional configuration
       property: 'frontMatter', // property added to file object
                                // also works with deep property selectors

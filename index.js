@@ -1,41 +1,35 @@
 'use strict';
 
-var frontMatter = require('front-matter');
-var objectPath = require('object-path');
-var PluginError = require('gulp-util').PluginError;
-var Transform = require('readable-stream/transform');
-var tryit = require('tryit');
-var VinylBufferStream = require('vinyl-bufferstream');
+const frontMatter = require('front-matter');
+const objectPath = require('object-path');
+const PluginError = require('gulp-util/lib/PluginError');
+const Transform = require('readable-stream/transform');
+const tryit = require('tryit');
+const VinylBufferStream = require('vinyl-bufferstream');
 
 module.exports = function gulpFrontMatter(options) {
-  options = options || {};
+  options = Object.assign({property: 'frontMatter'}, options);
 
-  var property;
-  if (options.property !== undefined) {
-    if (typeof options.property !== 'string') {
-      throw new PluginError('gulp-front-matter', new TypeError(
-        options.property +
-        ' is not a string. "property" option must be a string.'
-      ));
-    }
-    property = options.property;
-  } else {
-    property = 'frontMatter';
+  if (typeof options.property !== 'string') {
+    throw new PluginError('gulp-front-matter', new TypeError(
+      options.property +
+      ' is not a string. "property" option must be a string.'
+    ));
   }
 
   return new Transform({
     objectMode: true,
-    transform: function gulpFrontMatterTransform(file, enc, cb) {
-      var run = new VinylBufferStream(function(buf, done) {
-        var content;
+    transform(file, enc, cb) {
+      const run = new VinylBufferStream((buf, done) => {
+        let content;
 
-        tryit(function() {
+        tryit(() => {
           content = frontMatter(String(buf), {filename: file.path});
-          objectPath.set(file, property, content.attributes);
-        }, function(err) {
+          objectPath.set(file, options.property, content.attributes);
+        }, err => {
           if (err) {
             err.message = err.stack.replace(/\n +at[\s\S]*/, '');
-            var errorOption = {};
+            const errorOption = {};
             if (file.path !== undefined) {
               errorOption.fileName = file.path;
             }
@@ -52,15 +46,14 @@ module.exports = function gulpFrontMatter(options) {
         });
       });
 
-      var self = this;
-
-      run(file, function(err, contents) {
+      run(file, (err, contents) => {
         if (err) {
-          self.emit('error', err);
+          this.emit('error', err);
         } else {
           file.contents = contents;
-          self.push(file);
+          this.push(file);
         }
+
         cb();
       });
     }
