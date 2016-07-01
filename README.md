@@ -1,11 +1,11 @@
-#gulp-front-matter 
+# gulp-front-matter 
 
 [![NPM version](http://img.shields.io/npm/v/gulp-front-matter.svg)](https://www.npmjs.com/package/gulp-front-matter)
-[![Build Status](http://img.shields.io/travis/lmtm/gulp-front-matter.svg)](http://travis-ci.org/lmtm/gulp-front-matter)
+[![Build Status](http://img.shields.io/travis/shinnn/gulp-front-matter.svg)](http://travis-ci.org/shinnn/gulp-front-matter)
 [![Build status](https://ci.appveyor.com/api/projects/status/uklpp61n71y0pvr2?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/gulp-front-matter)
-[![Coverage Status](https://img.shields.io/coveralls/lmtm/gulp-front-matter.svg)](https://coveralls.io/r/lmtm/gulp-front-matter)
-[![Dependency Status](https://img.shields.io/david/lmtm/gulp-front-matter.svg?label=deps)](https://david-dm.org/lmtm/gulp-front-matter)
-[![devDependency Status](https://img.shields.io/david/dev/lmtm/gulp-front-matter.svg?label=devDeps)](https://david-dm.org/lmtm/gulp-front-matter#info=devDependencies)
+[![Coverage Status](https://img.shields.io/coveralls/shinnn/gulp-front-matter.svg)](https://coveralls.io/r/shinnn/gulp-front-matter)
+[![Dependency Status](https://david-dm.org/shinnn/gulp-front-matter.svg)](https://david-dm.org/shinnn/gulp-front-matter)
+[![devDependency Status](https://david-dm.org/shinnn/gulp-front-matter/dev-status.svg)](https://david-dm.org/shinnn/gulp-front-matter#info=devDependencies)
 
 ## Information
 
@@ -51,7 +51,8 @@ gulp.task('blog-posts', () => {
 
 ## LICENSE (BSD 2-Clause)
 
-> Copyright (c) 2013, Nicolas Chambrier
+> Copyright (c) 2013 - 2015, Nicolas Chambrier
+> Copyright (c) 2016, Shinnosuke Watanabe
 > All rights reserved.
 >
 > Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
