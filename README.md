@@ -2,7 +2,6 @@
 
 [![npm version](http://img.shields.io/npm/v/gulp-front-matter.svg)](https://www.npmjs.com/package/gulp-front-matter)
 [![Build Status](https://travis-ci.org/shinnn/gulp-front-matter.svg?branch=master)](https://travis-ci.org/shinnn/gulp-front-matter)
-[![Build status](https://ci.appveyor.com/api/projects/status/uklpp61n71y0pvr2/branch/master?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/gulp-front-matter/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/gulp-front-matter.svg)](https://coveralls.io/r/shinnn/gulp-front-matter)
 
 ## Information
