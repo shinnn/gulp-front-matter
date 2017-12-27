@@ -136,7 +136,7 @@ test('gulp-front-matter', t => {
 
 	t.throws(
 		() => gulpFrontMatter({property: 1}),
-		/.*is not a string.*must be a string/,
+		/Expected `property` option to be a string, but a non-string value 1 \(number\) was provided\./,
 		'should throw a plugin error when `property` option is not a string.'
 	);
 });

@@ -1,18 +1,21 @@
 'use strict';
 
 const frontMatter = require('front-matter');
+const inspectWithKind = require('inspect-with-kind');
 const objectPath = require('object-path');
 const PluginError = require('plugin-error');
 const Transform = require('stream').Transform;
 const VinylBufferStream = require('vinyl-bufferstream');
 
+const PROPERTY_ERROR = 'Expected `property` option to be a string';
+
 module.exports = function gulpFrontMatter(options) {
 	options = Object.assign({property: 'frontMatter'}, options);
 
 	if (typeof options.property !== 'string') {
-		throw new PluginError('gulp-front-matter', new TypeError(`${
-			options.property
-		} is not a string. "property" option must be a string.`));
+		throw new PluginError('gulp-front-matter', new TypeError(`${PROPERTY_ERROR}, but a non-string value ${
+			inspectWithKind(options.property)
+		} was provided.`));
 	}
 
 	return new Transform({
