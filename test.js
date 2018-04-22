@@ -102,7 +102,7 @@ test('gulp-front-matter', t => {
 			/.*line.*column/u.test(message),
 			'should emit a plugin error when it cannot parse front matter in a buffer as YAML.'
 		);
-		t.equal(fileName, 'foo/bar.yaml', 'should include file name in the error.');
+		t.ok(/^foo(\\|\/)bar\.yaml$/.test(fileName), 'should include file name in the error.');
 	})
 	.end(new File({
 		path: 'foo/bar.yaml',
