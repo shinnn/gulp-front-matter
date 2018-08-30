@@ -16,7 +16,7 @@ module.exports = function gulpFrontMatter(...args) {
 		throw new PluginError('gulp-front-matter', `Expected 0 or 1 argument ([<Object>]), but got ${argLen} arguments.`);
 	}
 
-	const options = Object.assign({property: 'frontMatter'}, ...args);
+	const options = {property: 'frontMatter', ...args[0]};
 
 	if (typeof options.property !== 'string') {
 		throw new PluginError('gulp-front-matter', `${PROPERTY_ERROR}, but a non-string value ${
