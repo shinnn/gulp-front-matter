@@ -6,7 +6,7 @@ const stringToStream = require('from2-string');
 const test = require('tape');
 
 test('gulp-front-matter', t => {
-	t.plan(18);
+	t.plan(19);
 
 	gulpFrontMatter()
 	.on('error', t.fail)
@@ -99,7 +99,7 @@ test('gulp-front-matter', t => {
 	gulpFrontMatter()
 	.on('error', ({fileName, message}) => {
 		t.ok(
-			/.*line.*column/.test(message),
+			/.*line.*column/u.test(message),
 			'should emit a plugin error when it cannot parse front matter in a buffer as YAML.'
 		);
 		t.equal(fileName, 'foo/bar.yaml', 'should include file name in the error.');
@@ -112,7 +112,7 @@ test('gulp-front-matter', t => {
 	gulpFrontMatter()
 	.on('error', err => {
 		t.ok(
-			/.*line.*column/.test(err.message),
+			/.*line.*column/u.test(err.message),
 			'should emit a plugin error when it cannot parse front matter in a stream as YAML.'
 		);
 		t.notOk(
@@ -128,7 +128,7 @@ test('gulp-front-matter', t => {
 	gulpFrontMatter({property: 'data.foo'})
 	.on('error', err => {
 		t.ok(
-			/^TypeError.*true/.test(err.message),
+			/^TypeError.*true/u.test(err.message),
 			'should emit a plugin error when it fails to set deep property.'
 		);
 	})
@@ -136,7 +136,13 @@ test('gulp-front-matter', t => {
 
 	t.throws(
 		() => gulpFrontMatter({property: 1}),
-		/Expected `property` option to be a string, but a non-string value 1 \(number\) was provided\./,
+		/Expected `property` option to be a string, but a non-string value 1 \(number\) was provided\./u,
+		'should throw a plugin error when `property` option is not a string.'
+	);
+
+	t.throws(
+		() => gulpFrontMatter({}, {}),
+		/Expected 0 or 1 argument \(\[<Object>\]\), but got 2 arguments\./u,
 		'should throw a plugin error when `property` option is not a string.'
 	);
 });
