@@ -36,6 +36,7 @@
 		"inspect-with-kind": "^1.0.4",
 		"object-path": "^0.11.4",
 		"plugin-error": "^0.1.2",
+		"safe-buffer": "^5.1.2",
 		"vinyl-bufferstream": "^1.0.1"
 	},
 	"devDependencies": {
