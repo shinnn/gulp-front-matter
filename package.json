@@ -3,6 +3,11 @@
 	"version": "2.0.0-3",
 	"description": "Extract front-matter header from files",
 	"repository": "shinnn/gulp-front-matter",
+	"author": "Nicolas Chambrier <naholyr@gmail.com> (http://naholyr.fr/)",
+	"contributors": [
+		"Shinnosuke Watanabe (https://github.com/shinnn)"
+	],
+	"license": "BSD-2-Clause",
 	"files": [
 		"index.js"
 	],
@@ -26,17 +31,11 @@
 		"metadata",
 		"meta-data"
 	],
-	"author": "Nicolas Chambrier <naholyr@gmail.com> (http://naholyr.fr/)",
-	"contributors": [
-		"Shinnosuke Watanabe (https://github.com/shinnn)"
-	],
-	"license": "BSD-2-Clause",
 	"dependencies": {
 		"front-matter": "^2.3.0",
 		"inspect-with-kind": "^1.0.4",
 		"object-path": "^0.11.4",
 		"plugin-error": "^0.1.2",
-		"safe-buffer": "^5.1.2",
 		"vinyl-bufferstream": "^1.0.1"
 	},
 	"devDependencies": {

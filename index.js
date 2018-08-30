@@ -4,7 +4,6 @@ const frontMatter = require('front-matter');
 const inspectWithKind = require('inspect-with-kind');
 const objectPath = require('object-path');
 const PluginError = require('plugin-error');
-const SafeBuffer = require('safe-buffer').Buffer;
 const Transform = require('stream').Transform;
 const VinylBufferStream = require('vinyl-bufferstream');
 
@@ -41,7 +40,7 @@ module.exports = function gulpFrontMatter(options) {
 				}
 
 				if (options.remove !== false) {
-					done(null, SafeBuffer.from(content.body));
+					done(null, Buffer.from(content.body));
 					return;
 				}
 
