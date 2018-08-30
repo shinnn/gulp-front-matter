@@ -2,7 +2,7 @@
 
 const gulpFrontMatter = require('.');
 const File = require('vinyl');
-const stringToStream = require('from2-string');
+const toReadableStream = require('to-readable-stream');
 const test = require('tape');
 
 test('gulp-front-matter', t => {
@@ -63,7 +63,7 @@ test('gulp-front-matter', t => {
 			t.ok(chunk.equals(Buffer.from('Hi')), 'should remove front matter from stream.');
 		});
 	})
-	.end(new File({contents: stringToStream('---\na: 1\n---\nHi')}));
+	.end(new File({contents: toReadableStream('---\na: 1\n---\nHi')}));
 
 	gulpFrontMatter({property: 'foo', remove: false})
 	.on('error', t.fail)
@@ -120,7 +120,7 @@ test('gulp-front-matter', t => {
 			'should not include file name in the error when the vinyl object doesn\'t have one.'
 		);
 	})
-	.end(new File({contents: stringToStream('---\n:\n-{\n---')}));
+	.end(new File({contents: toReadableStream('---\n:\n-{\n---')}));
 
 	const deepPropFile = new File({contents: Buffer.from('Hi')});
 	deepPropFile.data = true;

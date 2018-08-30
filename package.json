@@ -12,7 +12,7 @@
 		"index.js"
 	],
 	"scripts": {
-		"pretest": "eslint --fix --format=codeframe index.js test.js",
+		"pretest": "eslint .",
 		"test": "nyc node test.js"
 	},
 	"keywords": [
@@ -35,22 +35,22 @@
 		"front-matter": "^2.3.0",
 		"inspect-with-kind": "^1.0.4",
 		"object-path": "^0.11.4",
-		"plugin-error": "^0.1.2",
+		"plugin-error": "^1.0.1",
 		"vinyl-bufferstream": "^1.0.1"
 	},
 	"devDependencies": {
-		"@shinnn/eslint-config-node": "^5.0.0",
-		"eslint": "^4.14.0",
-		"from2-string": "^1.1.0",
-		"nyc": "^11.4.1",
-		"tape": "^4.8.0",
-		"vinyl": "^2.1.0"
+		"@shinnn/eslint-config-node": "^6.0.0",
+		"eslint": "^5.4.0",
+		"nyc": "^13.0.1",
+		"nyc-config-common": "^1.0.0",
+		"tape": "^4.9.1",
+		"to-readable-stream": "^1.0.0",
+		"vinyl": "^2.2.0"
 	},
 	"eslintConfig": {
-		"extends": "@shinnn/node",
-		"rules": {
-			"no-buffer-constructor": "off",
-			"node/no-deprecated-api": "off"
-		}
+		"extends": "@shinnn/node"
+	},
+	"nyc": {
+		"extends": "nyc-config-common"
 	}
 }

@@ -34,7 +34,7 @@ module.exports = function gulpFrontMatter(...args) {
 					content = frontMatter(String(buf), {filename: file.path});
 					objectPath.set(file, options.property, content.attributes);
 				} catch (err) {
-					err.message = err.stack.replace(/\n +at[\s\S]*/, '');
+					err.message = err.stack.replace(/\n +at[\s\S]*/u, '');
 					const errorOption = {};
 
 					if (file.path !== undefined) {
