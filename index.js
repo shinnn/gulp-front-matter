@@ -1,6 +1,6 @@
 'use strict';
 
-const frontMatter = require('front-matter');
+const matter = require('gray-matter');
 const inspectWithKind = require('inspect-with-kind');
 const objectPath = require('object-path');
 const PluginError = require('plugin-error');
@@ -31,8 +31,8 @@ module.exports = function gulpFrontMatter(...args) {
 				let content;
 
 				try {
-					content = frontMatter(String(buf), {filename: file.path});
-					objectPath.set(file, options.property, content.attributes);
+					content = matter(String(buf), {filename: file.path});
+					objectPath.set(file, options.property, content.data);
 				} catch (err) {
 					err.message = err.stack.replace(/\n +at[\s\S]*/u, '');
 					const errorOption = {};
@@ -46,7 +46,7 @@ module.exports = function gulpFrontMatter(...args) {
 				}
 
 				if (options.remove !== false) {
-					done(null, Buffer.from(content.body));
+					done(null, Buffer.from(content.content));
 					return;
 				}
 
